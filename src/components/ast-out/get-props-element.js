@@ -15,15 +15,15 @@ export function getPropsElement(props, {showWhitespaces} = {}) {
             ([field, value]) => getTableRow([field, value].map((value) => {
                 let children = value;
 
-                if (typeof value !== 'string') {
-                    children = JSON.stringify(value);
-                } else if (value.includes('\n')) {
+                if (typeof children !== 'string') {
+                    children = JSON.stringify(children);
+                } else if (children.includes('\n')) {
                     children = showWhitespaces ?
                         h('div', {
                             className: 'node-element__preformatted',
-                            __innerHTML: addWhitespaces(value)
+                            __innerHTML: addWhitespaces(children.replace(/</g, '&lt;'))
                         }) :
-                        getPre(value);
+                        getPre(children.replace(/</g, '&lt;'));
                 }
 
                 return h('td', null, children);
