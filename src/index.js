@@ -61,6 +61,10 @@ const treeHandlers = {
         for (const [, node] of childrenNodes.entries()) {
             node.open = isExpand;
         }
+
+        if (isExpand) {
+            nodeElement.open = true;
+        }
     }
 };
 
