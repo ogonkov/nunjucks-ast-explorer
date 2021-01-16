@@ -25,6 +25,19 @@ body {
     }
   }
 
+  &__control {
+    margin-left: 0.5em;
+    opacity: 0;
+    visibility: hidden;
+    transition-property: visibility, opacity;
+    transition-duration: 0.1s;
+
+    @at-root summary:hover & {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
   &__preformatted {
     background: lightgrey;
     padding: 0.5em;

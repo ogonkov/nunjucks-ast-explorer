@@ -1,6 +1,7 @@
 import nunjucks from 'nunjucks';
 import {getElement as h} from "./components/ast-out/get-element.js";
 import {getFormData} from "./components/get-form-data.js";
+import {getParentElement} from "./components/get-parent-element.js";
 import {printNodes} from "./components/print-nodes.js";
 import {RemoteExtension} from "./RemoteExtension.js";
 
@@ -12,7 +13,7 @@ const extensions = [
     new RemoteExtension()
 ];
 
-const handlers = {
+const formHandlers = {
     handleEvent(event) {
         switch (event.type) {
             case 'input': return this.handleInput(event);
@@ -32,6 +33,34 @@ const handlers = {
 
     handleSubmit(event) {
         event.preventDefault();
+    }
+};
+
+const treeHandlers = {
+    handleEvent(event) {
+        switch (event.type) {
+            case 'click': this.handleClick(event);
+        }
+    },
+
+    handleClick(event) {
+        const element = event.target;
+        const isExpand = element.matches('[data-ui-action="expand"]');
+
+        if (!isExpand && !element.matches('[data-ui-action="collapse"]')) {
+            return;
+        }
+
+        const nodeElement = getParentElement(element, '[data-ui-area="node"]');
+        if (nodeElement === null) {
+            return;
+        }
+
+        const childrenNodes = nodeElement.querySelectorAll('[data-ui-area="node"]');
+
+        for (const [, node] of childrenNodes.entries()) {
+            node.open = isExpand;
+        }
     }
 };
 
@@ -62,8 +91,11 @@ function render(template, {showWhitespaces} = {}) {
 
 function main() {
     const form = document.getElementById('explorer');
-    form.addEventListener('submit', handlers);
-    form.addEventListener('input', handlers);
+    form.addEventListener('submit', formHandlers);
+    form.addEventListener('input', formHandlers);
+
+    const rootNode = document.getElementById('tree');
+    rootNode.addEventListener('click', treeHandlers);
 
     const {
         template,

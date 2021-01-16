@@ -1,3 +1,9 @@
+function getDatasetKey(value) {
+    return value
+        .replace(/^data-/, '')
+        .replace(/-(\w)/, (_, letter) => letter.toUpperCase());
+}
+
 export function getElement(tagName = 'div', attributes = {}, children = []) {
     const element = document.createElement(tagName);
 
@@ -10,6 +16,12 @@ export function getElement(tagName = 'div', attributes = {}, children = []) {
 
         if (attribute === 'className') {
             element.classList.add(value);
+
+            continue;
+        }
+
+        if (attribute.startsWith('data-')) {
+            element.dataset[getDatasetKey(attribute)] = value;
 
             continue;
         }
