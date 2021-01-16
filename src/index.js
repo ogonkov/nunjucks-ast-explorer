@@ -5,6 +5,8 @@ import {RemoteExtension} from "./RemoteExtension.js";
 
 import {domReady} from "./utilities/dom-ready.js";
 
+import './index.scss';
+
 const extensions = [
     new RemoteExtension()
 ];
