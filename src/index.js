@@ -1,5 +1,6 @@
 import nunjucks from 'nunjucks';
 import {getElement as h} from "./components/ast-out/get-element.js";
+import {getFormData} from "./components/get-form-data.js";
 import {printNodes} from "./components/print-nodes.js";
 import {RemoteExtension} from "./RemoteExtension.js";
 
@@ -20,7 +21,8 @@ const handlers = {
     },
 
     handleInput(/* InputEvent */ event) {
-        render(event.target);
+        const {template} = getFormData(event.target.form);
+        render(template);
     },
 
     handleSubmit(event) {
@@ -28,8 +30,7 @@ const handlers = {
     }
 };
 
-function render(/* HTMLTextAreaElement */ textarea) {
-    const {value: template} = textarea;
+function render(template) {
     const rootNode = document.getElementById('tree');
     rootNode.innerHTML = '';
 
@@ -57,9 +58,8 @@ function main() {
     form.addEventListener('submit', handlers);
     form.addEventListener('input', handlers);
 
-    const source = form.elements.template;
-
-    render(source);
+    const {template} = getFormData(form);
+    render(template);
 }
 
 async function run() {
