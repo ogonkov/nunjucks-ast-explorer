@@ -13,19 +13,20 @@ export function getPropsElement(props, {showWhitespaces} = {}) {
         ]),
         h('tbody', null, Object.entries(props).map(
             ([field, value]) => getTableRow([field, value].map((value) => {
+                let children = value;
+
                 if (typeof value !== 'string') {
-                    return h('td', null, JSON.stringify(value));
+                    children = JSON.stringify(value);
                 } else if (value.includes('\n')) {
-                    return h('td', null, showWhitespaces ?
+                    children = showWhitespaces ?
                         h('div', {
                             className: 'node-element__preformatted',
                             __innerHTML: addWhitespaces(value)
                         }) :
-                        getPre(value)
-                    );
+                        getPre(value);
                 }
 
-                return h('td', null, value);
+                return h('td', null, children);
             }))
         ))
     ]);
