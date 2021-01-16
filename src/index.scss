@@ -7,6 +7,9 @@ body {
 
 header {
   margin: 0 0 1em;
+  padding: 0.5em;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.1);
+  background-color: mediumseagreen;
 }
 
 header h1,
@@ -39,6 +42,7 @@ header p {
 }
 
 .app-main {
+  padding: 0.5em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1em;
