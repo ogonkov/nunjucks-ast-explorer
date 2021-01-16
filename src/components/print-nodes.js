@@ -1,4 +1,5 @@
 import nunjucks from "nunjucks";
+import {getElement as h} from "./ast-out/get-element.js";
 import {getExtensionElement} from "./ast-out/get-extension-element.js";
 import {getPropsElement} from "./ast-out/get-props-element.js";
 import {getNodeElement} from "./get-node-element.js";
@@ -13,6 +14,14 @@ export function printNodes(node, element) {
         currentNode.appendChild(nodeElement);
 
         if (node instanceof nunjucks.nodes.NodeList) {
+            if (node.children.length === 0) {
+                nodeElement.appendChild(h('p', null, h(
+                    'em', null, '(empty)'
+                )))
+
+                continue;
+            }
+
             stack.push(...node.children.map((node) => [node, nodeElement]));
             continue;
         }
