@@ -1,4 +1,5 @@
 import nunjucks from 'nunjucks';
+import {getElement as h} from "./components/ast-out/get-element.js";
 import {printNodes} from "./components/print-nodes.js";
 import {RemoteExtension} from "./RemoteExtension.js";
 
@@ -34,10 +35,12 @@ function render(/* HTMLTextAreaElement */ textarea) {
     try {
         nodes = nunjucks.parser.parse(template, extensions);
     } catch (e) {
-        rootNode.innerHTML = `<div class="app-error">
-            <p>Failed to parse nodes. Line ${e.lineno}, column ${e.colno}.</p>
-            <p>${e.message}</p>
-        </div>`;
+        rootNode.appendChild(h('div', {
+            className: 'app-error'
+        }, [
+            h('p', null, `Failed to parse nodes. Line ${e.lineno}, column ${e.colno}.`),
+            h('p', null, e.message)
+        ]));
     }
 
     if (nodes === null) {
