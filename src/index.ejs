@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nunjucks template parser</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            font-size: 20px;
+        }
+
+        .app-error {
+            background-color: orangered;
+            border: solid 2px indianred;
+            padding: 1em;
+        }
+
+        .app-error p {
+            margin: 0;
+        }
+
+        .node-element > .node-element {
+            margin-left: 1em;
+        }
+
+        .node-element__preformatted {
+            background: lightgrey;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Nunjucks AST explorer</h1>
+    <p>What is your code looks like for Nunjucks parser</p>
+</header>
+
+<main>
+    <form action="" method="post" id="explorer">
+        <label for="app-template-input">Template</label>
+        <textarea id="app-template-input" name="template" rows="20"></textarea>
+    </form>
+
+    <div id="tree"></div>
+</main>
+
+</body>
+</html>
