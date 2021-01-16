@@ -10,11 +10,29 @@ header {
   padding: 0.5em;
   box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.1);
   background-color: mediumseagreen;
-}
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 
-header h1,
-header p {
-  margin: 0;
+  h1,
+  p {
+    margin: 0;
+  }
+
+  nav {
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      color: #333;
+    }
+  }
 }
 
 .form-label {
