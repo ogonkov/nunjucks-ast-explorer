@@ -5,6 +5,20 @@ body {
   font-size: 20px;
 }
 
+.form-label {
+  display: block;
+}
+
+.form-textarea {
+  width: 100%;
+}
+
+.form-row {
+  & + & {
+    margin-top: 0.5em;
+  }
+}
+
 .app-error {
   background-color: orangered;
   border: solid 2px indianred;
