@@ -1,7 +1,8 @@
-export function getPre(text) {
-    const element = document.createElement('pre');
-    element.innerHTML = text;
-    element.classList.add('node-element__preformatted');
+import {getElement as h} from "./get-element.js";
 
-    return element;
+export function getPre(text) {
+    return h('pre', {
+        __innerHTML: text,
+        className: 'node-element__preformatted'
+    });
 }

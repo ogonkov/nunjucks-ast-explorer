@@ -1,21 +1,14 @@
+import {getElement as h} from "../get-element.js";
 import {getPre} from "../get-pre.js";
 
 export function getTableRow(...values) {
-    const row = document.createElement('tr');
-
-    for (const value of values) {
-        const cell = document.createElement('td');
-
+    return h('tr', null, values.map((value) => {
         if (typeof value !== 'string') {
-            cell.textContent = JSON.stringify(value);
+            return h('td', null, JSON.stringify(value));
         } else if (value.includes('\n')) {
-            cell.appendChild(getPre(value));
-        } else {
-            cell.textContent = value;
+            return h('td', null, getPre(value));
         }
 
-        row.appendChild(cell);
-    }
-
-    return row;
+        return h('td', null, value);
+    }));
 }

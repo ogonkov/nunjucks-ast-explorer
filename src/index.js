@@ -1,5 +1,5 @@
 import nunjucks from 'nunjucks';
-import {getTableRow} from "./components/ast-out/table/get-row.js";
+import {printNodes} from "./components/print-nodes.js";
 import {RemoteExtension} from "./RemoteExtension.js";
 
 import {domReady} from "./utilities/dom-ready.js";
@@ -7,90 +7,6 @@ import {domReady} from "./utilities/dom-ready.js";
 const extensions = [
     new RemoteExtension()
 ];
-
-function getPropsElement(props) {
-    const element = document.createElement('table');
-
-    const header = document.createElement('thead');
-    header.innerHTML = '<tr><th>Field</th><th>Value</th></tr>';
-    element.appendChild(header);
-
-    const body = document.createElement('tbody');
-    Object.entries(props).forEach(function([field, value]) {
-        body.appendChild(getTableRow(field, value));
-    });
-
-    element.appendChild(body);
-
-    return element;
-}
-
-function getNodeElement(type, fieldName) {
-    const element = document.createElement('details');
-    element.setAttribute('open', '');
-    element.classList.add('node-element');
-
-    const summary = document.createElement('summary');
-    summary.textContent = fieldName ? `${type} (${fieldName})` : type;
-    element.appendChild(summary);
-
-    return element;
-}
-
-function getExtensionElement(node) {
-    const element = document.createElement('p');
-    element.classList.add('node-element__description');
-    element.textContent = `${node.extName.constructor.name || node.extName}.${node.prop}`;
-
-    return element;
-}
-
-function printNodes(node, element) {
-    const stack = [[node, element]];
-
-    while (stack.length) {
-        const [node, currentNode, fieldName] = stack.shift();
-        const nodeElement = getNodeElement(node.typename, fieldName);
-
-        currentNode.appendChild(nodeElement);
-
-        if (node instanceof nunjucks.nodes.NodeList) {
-            stack.push(...node.children.map((node) => [node, nodeElement]));
-            continue;
-        }
-
-        if (node instanceof nunjucks.nodes.CallExtension) {
-            nodeElement.appendChild(getExtensionElement(node));
-
-            if (node.args) {
-                stack.push([node.args, nodeElement, 'args']);
-            }
-
-            if (node.contentArgs) {
-                stack.push(...node.contentArgs.map((node) => [node, nodeElement, 'contentArgs']));
-            }
-            continue;
-        }
-
-        const nodes = [];
-        let props = {};
-        node.iterFields(function (val, fieldName) {
-            if (val instanceof nunjucks.nodes.Node) {
-                nodes.push([fieldName, val]);
-            } else {
-                props[fieldName] = val;
-            }
-        });
-
-        if (Object.keys(props).length > 0) {
-            nodeElement.appendChild(getPropsElement(props));
-        }
-
-        for (const [fieldName, node] of nodes) {
-            stack.push([node, nodeElement, fieldName]);
-        }
-    }
-}
 
 const handlers = {
     handleEvent(event) {
