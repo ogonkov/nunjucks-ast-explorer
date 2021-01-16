@@ -35,13 +35,14 @@ body {
 }
 
 .node-element {
+  padding-left: 1em;
+
+  summary {
+    margin-left: -1em;
+  }
+
   & > & {
     margin-left: 0.5em;
-    padding-left: 1em;
-
-    summary {
-      margin-left: -1em;
-    }
   }
 
   &__control {
