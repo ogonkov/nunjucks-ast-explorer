@@ -15,6 +15,11 @@ body {
   }
 }
 
+.app-tree {
+  background-color: lightyellow;
+  padding: 1em;
+}
+
 .node-element {
   & > & {
     margin-left: 0.5em;
