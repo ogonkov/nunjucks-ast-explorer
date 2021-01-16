@@ -21,8 +21,13 @@ const handlers = {
     },
 
     handleInput(/* InputEvent */ event) {
-        const {template} = getFormData(event.target.form);
-        render(template);
+        const {
+            template,
+            show_whitespace: showWhitespaces
+        } = getFormData(event.target.form);
+        render(template, {
+            showWhitespaces
+        });
     },
 
     handleSubmit(event) {
@@ -30,7 +35,7 @@ const handlers = {
     }
 };
 
-function render(template) {
+function render(template, {showWhitespaces} = {}) {
     const rootNode = document.getElementById('tree');
     rootNode.innerHTML = '';
 
@@ -50,7 +55,9 @@ function render(template) {
         return;
     }
 
-    printNodes(nodes, rootNode);
+    printNodes(nodes, rootNode, {
+        showWhitespaces
+    });
 }
 
 function main() {
@@ -58,8 +65,13 @@ function main() {
     form.addEventListener('submit', handlers);
     form.addEventListener('input', handlers);
 
-    const {template} = getFormData(form);
-    render(template);
+    const {
+        template,
+        show_whitespace: showWhitespaces
+    } = getFormData(form);
+    render(template, {
+        showWhitespaces
+    });
 }
 
 async function run() {

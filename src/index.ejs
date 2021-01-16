@@ -13,8 +13,15 @@
 
 <main>
     <form action="" method="post" id="explorer">
-        <label for="app-template-input">Template</label>
-        <textarea id="app-template-input" name="template" rows="20"></textarea>
+        <div>
+            <label for="app-template-input">Template</label>
+            <textarea id="app-template-input" name="template" rows="10"></textarea>
+        </div>
+
+        <div>
+            <input type="checkbox" name="show_whitespace" id="app-show-whitespace">
+            <label for="app-show-whitespace">Display whitespace characters</label>
+        </div>
     </form>
 
     <div id="tree"></div>

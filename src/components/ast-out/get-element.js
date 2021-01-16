@@ -2,7 +2,7 @@ export function getElement(tagName = 'div', attributes = {}, children = []) {
     const element = document.createElement(tagName);
 
     for (const [attribute, value] of Object.entries(attributes || {})) {
-        if (attribute === '__innerHTML') {
+        if (attribute === '__innerHTML' && typeof value === 'string') {
             element.innerHTML = value;
 
             continue;

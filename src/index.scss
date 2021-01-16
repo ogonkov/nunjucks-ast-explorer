@@ -22,6 +22,12 @@ body {
 
   &__preformatted {
     background: lightgrey;
+    padding: 0.5em;
+    font-family: monospace;
+
+    span {
+      color: darkgrey;
+    }
   }
 
   &__empty-children {

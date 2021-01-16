@@ -4,7 +4,9 @@ import {getExtensionElement} from "./ast-out/get-extension-element.js";
 import {getPropsElement} from "./ast-out/get-props-element.js";
 import {getNodeElement} from "./get-node-element.js";
 
-export function printNodes(node, element) {
+export function printNodes(node, element, {
+    showWhitespaces = false
+} = {}) {
     const stack = [[node, element]];
 
     while (stack.length) {
@@ -52,7 +54,9 @@ export function printNodes(node, element) {
         });
 
         if (Object.keys(props).length > 0) {
-            nodeElement.appendChild(getPropsElement(props));
+            nodeElement.appendChild(getPropsElement(props, {
+                showWhitespaces
+            }));
         }
 
         for (const [fieldName, node] of nodes) {
