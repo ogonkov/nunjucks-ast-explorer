@@ -15,7 +15,9 @@ export function printNodes(node, element) {
 
         if (node instanceof nunjucks.nodes.NodeList) {
             if (node.children.length === 0) {
-                nodeElement.appendChild(h('p', null, h(
+                nodeElement.appendChild(h('p', {
+                    className: 'node-element__empty-children'
+                }, h(
                     'em', null, '(empty)'
                 )))
 
