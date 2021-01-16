@@ -15,9 +15,23 @@ body {
   }
 }
 
+.app-main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.app-form {
+  grid-column: 1;
+  grid-row: 1;
+}
+
 .app-tree {
   background-color: lightyellow;
   padding: 1em;
+  grid-column: 2 / 4;
+  grid-row: 1;
 }
 
 .node-element {
