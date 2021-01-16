@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "nunjucks-ast-explorer",
   "version": "1.0.0",
   "description": "Explore Nunjucks templates AST",
