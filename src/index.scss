@@ -9,21 +9,23 @@ body {
   background-color: orangered;
   border: solid 2px indianred;
   padding: 1em;
+
+  p {
+    margin: 0;
+  }
 }
 
-.app-error p {
-  margin: 0;
-}
+.node-element {
+  & > & {
+    margin-left: 1em;
+  }
 
-.node-element > .node-element {
-  margin-left: 1em;
-}
+  &__preformatted {
+    background: lightgrey;
+  }
 
-.node-element__preformatted {
-  background: lightgrey;
-}
-
-.node-element__empty-children {
-  margin: 0;
-  color: gray;
+  &__empty-children {
+    margin: 0;
+    color: gray;
+  }
 }
