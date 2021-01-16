@@ -10,8 +10,8 @@ module.exports = {
     devServer: {
         http2: true,
         https: {
-            key: fs.readFileSync(path.resolve(__dirname, '..', 'localhost-privkey.pem')),
-            cert: fs.readFileSync(path.resolve(__dirname, '..', 'localhost-cert.pem'))
+            key: fs.readFileSync(path.resolve(__dirname, '..', 'localhost.key')),
+            cert: fs.readFileSync(path.resolve(__dirname, '..', 'localhost.cert'))
         }
     },
 

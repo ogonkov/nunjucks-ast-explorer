@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Explore Nunjucks templates AST",
   "scripts": {
-    "prestart": "[ ! -f 'localhost-privkey.pem' ] && ./contrib/generate-keys.sh || echo 'Keys already exist. Skip.'",
+    "prestart": "[ ! -f 'localhost.key' ] && ./contrib/generate-keys.sh || echo 'Keys already exist. Skip.'",
     "start": "webpack serve --config configs/webpack.config.js",
     "test": "jest"
   },
