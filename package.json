@@ -24,7 +24,6 @@
   "homepage": "https://github.com/ogonkov/nunjucks-ast-explorer#readme",
   "dependencies": {
     "@babel/runtime-corejs3": "^7.12.5",
-    "foundation-sites": "^6.6.3",
     "nunjucks": "^3.2.2"
   },
   "devDependencies": {
