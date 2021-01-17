@@ -3,14 +3,12 @@ import {getElement as h} from "./components/ast-out/get-element.js";
 import {getFormData} from "./components/get-form-data.js";
 import {getParentElement} from "./components/get-parent-element.js";
 import {printNodes} from "./components/print-nodes.js";
-import {RemoteExtension} from "./RemoteExtension.js";
 
 import {domReady} from "./utilities/dom-ready.js";
 
 import './index.scss';
 
 const extensions = [
-    new RemoteExtension()
 ];
 
 const formHandlers = {
