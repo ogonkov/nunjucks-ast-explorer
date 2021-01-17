@@ -48,14 +48,15 @@ jobs:
           name: pages
           path: public
       - name: Get current date
-        run: echo "NOW::$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       - name: Commit docs
         run: |
           git config --local user.email $GITHUB_ACTOR@users.noreply.github.com
           git config --local user.name "$GITHUB_ACTOR"
           mv public/* .
           git add --all
-          git commit -m "Pages for $NOW"
+          git commit -m "Pages for ${{ steps.date.outputs.date }}"
       - name: Push docs
         uses: ad-m/github-push-action@master
         with:
