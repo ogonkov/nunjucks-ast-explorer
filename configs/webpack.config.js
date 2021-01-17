@@ -12,18 +12,21 @@ module.exports = function(env, argv) {
         new HTMLWebpackPlugin(),
         new CircularDependencyPlugin()
     ];
+    let devServer = {};
     if (!devMode) {
         plugins.push(new MiniCssExtractPlugin());
-    }
-
-    return {
-        devServer: {
+    } else {
+        devServer = {
             http2: true,
             https: {
                 key: fs.readFileSync(path.resolve(__dirname, '..', 'localhost.key')),
                 cert: fs.readFileSync(path.resolve(__dirname, '..', 'localhost.cert'))
             }
-        },
+        };
+    }
+
+    return {
+        devServer,
 
         module: {
             rules: [
