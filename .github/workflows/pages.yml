@@ -26,7 +26,7 @@ jobs:
             node-12.x-
       - run: npm install
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-      - name: Build API docs
+      - name: Build pages
         run: npm run build -- -o public --mode production
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
