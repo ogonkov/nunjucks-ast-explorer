@@ -9,7 +9,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = function(env, argv) {
     const devMode = argv.mode !== 'production';
     const plugins = [
-        new HTMLWebpackPlugin(),
+        new HTMLWebpackPlugin({
+            scriptLoading: 'defer',
+            meta: {
+                description: 'Explore Nunjucks template AST',
+                viewport: 'width=device-width, initial-scale=1',
+                'theme-color': '#3CB371'
+            }
+        }),
         new CircularDependencyPlugin()
     ];
     let devServer = {};
