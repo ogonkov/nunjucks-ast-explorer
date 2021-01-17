@@ -1,0 +1,52 @@
+{
+  "private": true,
+  "name": "nunjucks-ast-explorer",
+  "version": "1.0.0",
+  "description": "Explore Nunjucks templates AST",
+  "scripts": {
+    "prestart": "[ ! -f 'localhost.key' ] && ./contrib/generate-keys.sh || echo 'Keys already exist. Skip.'",
+    "start": "webpack serve --config configs/webpack.config.js",
+    "build": "webpack --config configs/webpack.config.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ogonkov/nunjucks-ast-explorer.git"
+  },
+  "keywords": [
+    "nunjucks",
+    "ast"
+  ],
+  "author": "ogonkov <lesha.ogonkov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ogonkov/nunjucks-ast-explorer/issues"
+  },
+  "homepage": "https://github.com/ogonkov/nunjucks-ast-explorer#readme",
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.12.5",
+    "normalize.css": "^8.0.1",
+    "nunjucks": "^3.2.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
+    "circular-dependency-plugin": "^5.2.2",
+    "css-loader": "^5.0.1",
+    "fibers": "^5.0.0",
+    "html-webpack-plugin": "^4.5.1",
+    "mini-css-extract-plugin": "^1.3.4",
+    "postcss": "^8.2.2",
+    "postcss-loader": "^4.1.0",
+    "postcss-preset-env": "^6.7.0",
+    "sass": "^1.32.0",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.1"
+  }
+}
