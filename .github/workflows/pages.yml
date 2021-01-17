@@ -20,12 +20,11 @@ jobs:
       - uses: actions/cache@v1
         id: cache-node-modules
         with:
-          path: node_modules
+          path: .npm
           key: node-12.x-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             node-12.x-
-      - run: npm install
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+      - run: npm ci --prefer-offline --tmp .npm/tmp --cache .npm/cache
       - name: Build pages
         run: npm run build -- -o public --mode production
       - name: Upload artifacts
