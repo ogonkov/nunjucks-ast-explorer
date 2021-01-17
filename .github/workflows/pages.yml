@@ -3,6 +3,9 @@ name: Pages
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'configs/**'
+      - 'src/**'
 
 jobs:
   build:
