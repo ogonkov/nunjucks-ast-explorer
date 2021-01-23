@@ -1,0 +1,13 @@
+.form-label {
+  display: block;
+}
+
+.form-textarea {
+  width: 100%;
+}
+
+.form-row {
+  & + & {
+    margin-top: 0.5em;
+  }
+}
