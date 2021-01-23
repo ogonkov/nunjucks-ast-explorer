@@ -1,14 +1,10 @@
 @import "~normalize.css";
 
+@import "components/app/base";
 @import "components/app/layout";
 @import "components/app/header";
 
 @import "components/form/form";
-
-body {
-  font-family: sans-serif;
-  font-size: 20px;
-}
 
 .app-error {
   background-color: orangered;
