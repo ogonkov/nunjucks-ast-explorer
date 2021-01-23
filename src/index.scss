@@ -1,32 +1,11 @@
 @import "~normalize.css";
 
 @import "components/app/layout";
+@import "components/app/header";
 
 body {
   font-family: sans-serif;
   font-size: 20px;
-}
-
-header {
-  h1,
-  p {
-    margin: 0;
-  }
-
-  nav {
-    ul {
-      margin: 0;
-      padding: 0;
-    }
-
-    li {
-      list-style: none;
-    }
-
-    a {
-      color: #333;
-    }
-  }
 }
 
 .form-label {
