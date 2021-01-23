@@ -1,0 +1,31 @@
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+.app {
+  height: 100vh;
+  padding: 0 0.5em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  grid-template-rows: 100px 1fr;
+}
+
+.app-header {
+  grid-column: span 3;
+  padding: 0.5em;
+  margin: 0 -0.5em;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.1);
+  background-color: mediumseagreen;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.app-main {
+  grid-column: span 2;
+}
