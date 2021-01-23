@@ -75,7 +75,7 @@ function render(template, {showWhitespaces} = {}) {
         nodes = nunjucks.parser.parse(template, extensions);
     } catch (e) {
         rootNode.appendChild(h('div', {
-            className: 'app-error'
+            className: 'tree-error'
         }, [
             h('p', null, `Failed to parse nodes. Line ${e.lineno}, column ${e.colno}.`),
             h('p', null, e.message)

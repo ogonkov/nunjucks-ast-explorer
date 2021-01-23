@@ -6,7 +6,9 @@
 </head>
 <body>
 
-<header>
+<div class="app">
+
+<header class="app-header">
     <div>
         <h1>Nunjucks AST explorer</h1>
         <p>What is your code looks like for Nunjucks parser</p>
@@ -20,7 +22,7 @@
     </nav>
 </header>
 
-<main class="app-main">
+<aside class="app-aside">
     <form action="" method="post" id="explorer" class="app-form">
         <div class="form-row">
             <label for="app-template-input" class="form-label">Template</label>
@@ -32,9 +34,13 @@
             <label for="app-show-whitespace">Display whitespace characters</label>
         </div>
     </form>
+</aside>
 
-    <div id="tree" class="app-tree"></div>
+<main class="app-main">
+    <div id="tree" class="tree"></div>
 </main>
+
+</div>
 
 </body>
 </html>

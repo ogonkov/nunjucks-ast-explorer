@@ -1,0 +1,24 @@
+.app-header {
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.1);
+  background-color: mediumseagreen;
+
+  h1,
+  p {
+    margin: 0;
+  }
+
+  nav {
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      color: #333;
+    }
+  }
+}

@@ -4,7 +4,7 @@ export function getExtensionElement(node) {
     return h(
         'p',
         {
-            className: 'node-element__description'
+            className: 'tree-node__description'
         },
         `${node.extName.constructor.name || node.extName}.${node.prop}`
     );

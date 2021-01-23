@@ -3,7 +3,7 @@ import {getElement as h} from "./ast-out/get-element.js";
 export function getNodeElement(type, fieldName) {
     return h('details', {
         open: true,
-        className: 'node-element',
+        className: 'tree-node',
         'data-ui-area': 'node'
     }, h(
         'summary',
@@ -12,12 +12,12 @@ export function getNodeElement(type, fieldName) {
             fieldName ? `${type} (${fieldName})` : type,
             h('button', {
                 title: 'Expand subtree',
-                className: 'node-element__control',
+                className: 'tree-node__control',
                 'data-ui-action': 'expand'
             }, '+'),
             h('button', {
                 title: 'Collapse subtree',
-                className: 'node-element__control',
+                className: 'tree-node__control',
                 'data-ui-action': 'collapse'
             }, '-')
         ]
