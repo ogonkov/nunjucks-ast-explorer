@@ -20,7 +20,7 @@ export function getPropsElement(props, {showWhitespaces} = {}) {
                 } else if (children.includes('\n')) {
                     children = showWhitespaces ?
                         h('div', {
-                            className: 'node-element__preformatted',
+                            className: 'tree-node__preformatted',
                             __innerHTML: addWhitespaces(children.replace(/</g, '&lt;'))
                         }) :
                         getPre(children.replace(/</g, '&lt;'));

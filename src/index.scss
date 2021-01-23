@@ -7,54 +7,5 @@
 @import "components/app/header";
 
 @import "components/tree/error";
-
-.app-tree {
-  background-color: lightyellow;
-  padding: 1em;
-}
-
-.node-element {
-  padding-left: 1em;
-
-  summary {
-    margin-left: -1em;
-  }
-
-  & > & {
-    margin-left: 0.5em;
-  }
-
-  &__control {
-    margin-left: 0.5em;
-    opacity: 0;
-    visibility: hidden;
-    transition-property: visibility, opacity;
-    transition-duration: 0.1s;
-
-    @at-root summary:hover & {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
-
-  &__preformatted {
-    background: lightgrey;
-    padding: 0.5em;
-    margin: 0;
-    font-family: monospace;
-
-    @at-root pre#{&} {
-      padding-right: 1.5em;
-    }
-
-    span {
-      color: darkgrey;
-      user-select: none;
-    }
-  }
-
-  &__empty-children {
-    margin: 0;
-    color: gray;
-  }
-}
+@import "components/tree/tree";
+@import "components/tree/node";
